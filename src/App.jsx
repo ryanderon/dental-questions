@@ -1,35 +1,123 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from 'framer-motion';
+import QuestionTypeSelector from './components/organisms/QuestionTypeSelector';
+import QuizView from './components/organisms/QuizView';
+import ResultsView from './components/organisms/ResultsView';
+import useQuiz from './hooks/useQuiz';
+import { PAKET_A } from './questions/PAKET_A';
+
+const VIEW_STATES = {
+  SELECT_TYPE: 'SELECT_TYPE',
+  QUIZ: 'QUIZ',
+  RESULTS: 'RESULTS'
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentView, setCurrentView] = useState(VIEW_STATES.SELECT_TYPE);
+  const [selectedQuestionSet, setSelectedQuestionSet] = useState(null);
+
+  // Initialize quiz hook with selected questions
+  const quiz = useQuiz(selectedQuestionSet?.questions || []);
+
+  // Available question sets (you can add more later)
+  const questionSets = [
+    {
+      type: 'PAKET A',
+      questions: PAKET_A
+    }
+    // Add more question sets here as you create them
+    // {
+    //   type: 'PAKET B',
+    //   questions: PAKET_B
+    // }
+  ];
+
+  const handleSelectType = (questionSet) => {
+    setSelectedQuestionSet(questionSet);
+    setCurrentView(VIEW_STATES.QUIZ);
+  };
+
+  const handleNext = () => {
+    quiz.goToNextQuestion();
+  };
+
+  const handlePrevious = () => {
+    quiz.goToPreviousQuestion();
+  };
+
+  const handleSubmit = () => {
+    quiz.submitQuiz();
+    setCurrentView(VIEW_STATES.RESULTS);
+  };
+
+  const handleRestart = () => {
+    quiz.resetQuiz();
+    setCurrentView(VIEW_STATES.QUIZ);
+  };
+
+  const handleBackToHome = () => {
+    quiz.resetQuiz();
+    setSelectedQuestionSet(null);
+    setCurrentView(VIEW_STATES.SELECT_TYPE);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen">
+      <AnimatePresence mode="wait">
+        {currentView === VIEW_STATES.SELECT_TYPE && (
+          <motion.div
+            key="select-type"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <QuestionTypeSelector
+              questionSets={questionSets}
+              onSelectType={handleSelectType}
+            />
+          </motion.div>
+        )}
+
+        {currentView === VIEW_STATES.QUIZ && (
+          <motion.div
+            key="quiz"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <QuizView
+              question={quiz.currentQuestion}
+              currentIndex={quiz.currentQuestionIndex}
+              totalQuestions={quiz.totalQuestions}
+              selectedAnswer={quiz.selectedAnswer}
+              onSelectAnswer={quiz.selectAnswer}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+              onSubmit={handleSubmit}
+            />
+          </motion.div>
+        )}
+
+        {currentView === VIEW_STATES.RESULTS && (
+          <motion.div
+            key="results"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <ResultsView
+              score={quiz.getResults().score}
+              totalQuestions={quiz.getResults().total}
+              wrongAnswers={quiz.getResults().wrongAnswers}
+              onRestart={handleRestart}
+              onBackToHome={handleBackToHome}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
-export default App
+export default App;
