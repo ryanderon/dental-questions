@@ -10,13 +10,11 @@ import Button from "../atoms/Button";
 import Text from "../atoms/Text";
 
 const ResultsView = ({
-  score,
-  totalQuestions,
-  wrongAnswers,
+  results,
   onRestart,
   onBackToHome,
 }) => {
-  const percentage = (score / totalQuestions) * 100;
+  const { score, total, percentage, wrongAnswers } = results;
 
   return (
     <div className="min-h-screen py-12">
@@ -52,7 +50,7 @@ const ResultsView = ({
         {/* Score Card */}
         <ScoreCard
           score={score}
-          total={totalQuestions}
+          total={total}
           percentage={percentage}
           wrongAnswers={wrongAnswers}
         />

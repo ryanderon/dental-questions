@@ -18,7 +18,7 @@ const ScoreCard = ({ score, total, percentage, wrongAnswers }) => {
     <motion.div
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5, type: 'spring' }}
+      transition={{ duration: 0.3, type: 'spring' }}
     >
       <Card className="text-center mb-6 bg-gradient-to-br from-sky-50 to-blue-50">
         <motion.div

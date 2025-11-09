@@ -7,7 +7,7 @@ const QuestionTypeCard = ({ type, questionCount, onSelect, index }) => {
     <motion.button
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.15, duration: 0.5, type: 'spring' }}
+      transition={{ delay: index * 0.08, duration: 0.3, type: 'spring' }}
       whileHover={{ scale: 1.05, y: -8 }}
       whileTap={{ scale: 0.95 }}
       onClick={onSelect}
@@ -23,14 +23,14 @@ const QuestionTypeCard = ({ type, questionCount, onSelect, index }) => {
           <motion.div 
             className="bg-sky-300 rounded-xl p-4 shadow-lg"
             whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             <BooksIcon size={40} weight="fill" className="text-slate-800" />
           </motion.div>
           
           <motion.div
             animate={{ x: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
             className="text-sky-400 group-hover:text-sky-600 transition-colors"
           >
             <CaretRightIcon size={32} weight="fill" />

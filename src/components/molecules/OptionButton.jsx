@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { CheckCircleIcon, XCircleIcon } from "@phosphor-icons/react";
 
 const OptionButton = ({
@@ -83,4 +84,4 @@ const OptionButton = ({
   );
 };
 
-export default OptionButton;
+export default memo(OptionButton);

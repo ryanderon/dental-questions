@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const useQuiz = (questions) => {
+  // Shuffle questions once when the quiz initializes
+  const shuffledQuestions = useMemo(() => shuffleArray(questions), [questions]);
+  
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
   const selectAnswer = (answer) => {
     setAnswers(prev => ({
@@ -15,7 +28,7 @@ const useQuiz = (questions) => {
   };
 
   const goToNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < shuffledQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     }
   };
@@ -40,7 +53,7 @@ const useQuiz = (questions) => {
     let correctCount = 0;
     const wrongAnswers = [];
 
-    questions.forEach((question, index) => {
+    shuffledQuestions.forEach((question, index) => {
       const userAnswer = answers[question.id];
       const isCorrect = userAnswer === question.correct_answer;
 
@@ -59,8 +72,8 @@ const useQuiz = (questions) => {
 
     return {
       score: correctCount,
-      total: questions.length,
-      percentage: (correctCount / questions.length) * 100,
+      total: shuffledQuestions.length,
+      percentage: (correctCount / shuffledQuestions.length) * 100,
       wrongAnswers
     };
   };
@@ -69,7 +82,7 @@ const useQuiz = (questions) => {
     currentQuestion,
     currentQuestionIndex,
     selectedAnswer: answers[currentQuestion?.id],
-    totalQuestions: questions.length,
+    totalQuestions: shuffledQuestions.length,
     isCompleted,
     selectAnswer,
     goToNextQuestion,

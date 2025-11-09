@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import QuestionTypeSelector from './components/organisms/QuestionTypeSelector';
@@ -21,7 +21,7 @@ function App() {
   const quiz = useQuiz(selectedQuestionSet?.questions || []);
 
   // Available question sets (you can add more later)
-  const questionSets = [
+  const questionSets = useMemo(() => [
     {
       type: 'PAKET A',
       questions: PAKET_A
@@ -31,36 +31,36 @@ function App() {
     //   type: 'PAKET B',
     //   questions: PAKET_B
     // }
-  ];
+  ], []);
 
-  const handleSelectType = (questionSet) => {
+  const handleSelectType = useCallback((questionSet) => {
     setSelectedQuestionSet(questionSet);
     setCurrentView(VIEW_STATES.QUIZ);
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     quiz.goToNextQuestion();
-  };
+  }, [quiz]);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     quiz.goToPreviousQuestion();
-  };
+  }, [quiz]);
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     quiz.submitQuiz();
     setCurrentView(VIEW_STATES.RESULTS);
-  };
+  }, [quiz]);
 
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     quiz.resetQuiz();
     setCurrentView(VIEW_STATES.QUIZ);
-  };
+  }, [quiz]);
 
-  const handleBackToHome = () => {
+  const handleBackToHome = useCallback(() => {
     quiz.resetQuiz();
     setSelectedQuestionSet(null);
     setCurrentView(VIEW_STATES.SELECT_TYPE);
-  };
+  }, [quiz]);
 
   return (
     <div className="min-h-screen">
@@ -107,9 +107,7 @@ function App() {
             exit={{ opacity: 0 }}
           >
             <ResultsView
-              score={quiz.getResults().score}
-              totalQuestions={quiz.getResults().total}
-              wrongAnswers={quiz.getResults().wrongAnswers}
+              results={quiz.getResults()}
               onRestart={handleRestart}
               onBackToHome={handleBackToHome}
             />

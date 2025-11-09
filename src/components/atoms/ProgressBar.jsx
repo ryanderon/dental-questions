@@ -30,13 +30,13 @@ const ProgressBar = ({ current, total, className = '' }) => {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="h-full bg-sky-300 rounded-full relative shadow-md"
         >
           {/* Subtle shimmer */}
           <motion.div
             animate={{ x: ['-100%', '200%'] }}
-            transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
             style={{ width: '50%' }}
           />

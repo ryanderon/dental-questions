@@ -8,7 +8,7 @@ const QuestionCard = ({ question, number, total, children }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200">
