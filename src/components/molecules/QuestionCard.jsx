@@ -10,7 +10,6 @@ const QuestionCard = ({ question, number, total, children }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
       >
-        {/* Header */}
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200">
           <div className="flex items-center gap-3">
             <div className="bg-slate-900 rounded-lg p-2.5">
@@ -28,22 +27,20 @@ const QuestionCard = ({ question, number, total, children }) => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-slate-100 px-4 py-2 rounded-lg">
             <span className="text-sm font-bold text-slate-700">
               {number} / {total}
             </span>
           </div>
-        </div>        {/* Question and Answers Side by Side */}
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Question Text - Left Side */}
           <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 h-fit md:sticky md:top-4">
             <p className="text-base text-slate-700 leading-relaxed">
               {question}
             </p>
           </div>
 
-          {/* Options - Right Side */}
           <div className="space-y-3">{children}</div>
         </div>
       </motion.div>

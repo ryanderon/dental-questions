@@ -1,40 +1,39 @@
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
-import { CaretLeftIcon, CaretRightIcon, CheckCircleIcon } from '@phosphor-icons/react';
-import QuestionCard from '../molecules/QuestionCard';
-import OptionButton from '../molecules/OptionButton';
-import Button from '../atoms/Button';
-import ProgressBar from '../atoms/ProgressBar';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  CheckCircleIcon,
+} from "@phosphor-icons/react";
+import QuestionCard from "../molecules/QuestionCard";
+import OptionButton from "../molecules/OptionButton";
+import Button from "../atoms/Button";
+import ProgressBar from "../atoms/ProgressBar";
 
-const QuizView = ({ 
-  question, 
-  currentIndex, 
-  totalQuestions, 
+const QuizView = ({
+  question,
+  currentIndex,
+  totalQuestions,
   selectedAnswer,
   onSelectAnswer,
   onNext,
   onPrevious,
-  onSubmit
+  onSubmit,
 }) => {
   const isLastQuestion = currentIndex === totalQuestions - 1;
   const isFirstQuestion = currentIndex === 0;
-  
+
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Progress Bar */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <ProgressBar 
-            current={currentIndex + 1} 
-            total={totalQuestions}
-          />
+          <ProgressBar current={currentIndex + 1} total={totalQuestions} />
         </motion.div>
-        
-        {/* Question Card with Animation */}
+
         <AnimatePresence mode="wait">
           <motion.div
             key={question.id}
@@ -60,8 +59,7 @@ const QuizView = ({
             </QuestionCard>
           </motion.div>
         </AnimatePresence>
-        
-        {/* Navigation Buttons */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,14 +70,14 @@ const QuizView = ({
             variant="outline"
             onClick={onPrevious}
             disabled={isFirstQuestion}
-            className={isFirstQuestion ? 'invisible' : ''}
+            className={isFirstQuestion ? "invisible" : ""}
           >
             <span className="flex items-center gap-2">
               <CaretLeftIcon size={20} weight="bold" />
               Sebelumnya
             </span>
           </Button>
-          
+
           <div className="flex gap-4">
             {isLastQuestion ? (
               <Button

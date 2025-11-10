@@ -7,14 +7,14 @@ const QuestionTypeSelector = ({ questionSets, onSelectType }) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-6xl">
-        {/* Header */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
           className="text-center mb-16"
         >
-          {/* Icon */}
+          
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
@@ -45,18 +45,18 @@ const QuestionTypeSelector = ({ questionSets, onSelectType }) => {
             </div>
           </motion.div>
           
-          {/* Title */}
+          
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
             Pilih Tipe Soal
           </h1>
           
-          {/* Subtitle */}
+          
           <p className="text-xl md:text-2xl text-white/95 font-semibold max-w-3xl mx-auto drop-shadow-lg">
             Pilih paket soal yang ingin Anda kerjakan dan mulai belajar
           </p>
         </motion.div>
         
-        {/* Question Cards Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {questionSets.map((set, index) => (
             <QuestionTypeCard
