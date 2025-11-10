@@ -1069,13 +1069,19 @@ export const PAKET_A = [
     correct_answer:
       "N. Alveolaris Superior Media, N. Alveolaris Superior Posterior, N. Palatinus Majus",
   },
-  // {
-  //   id: 85,
-  //   question:
-  //     "",
-  //   options: [],
-  //   correct_answer: "",
-  // }
+  {
+    id: 85,
+    question:
+      "Pasien laki-laki usia 8 tahun, diantar ibunya datang ke dokter gigi dengan keluhan gigi depannya tidak rata dan berwarna kuning kecoklatan. Berdasarkan pemeriksaan intraoral terlihat adanya sejumlah pit berwarna kuning kecoklatan di insisal mahkota 11-21 dan sepertiga insisal 31-41, serta di sepertiga tengah sampai oklusal mahkota 16, 26, 36, dan 46. Diagnosisnya seluruh gigi tersebut mengalami hypoplasia enamel. Kelainan yang dialami pasien anak di atas diakibatkan oleh adanya gangguan tumbuh kembang gigi pada tahap mana?",
+    options: [
+      "Tahap aposisi",
+      "Tahap kalsifikasi",
+      "Tahap proliferasi",
+      "Tahap histodiferensiasi",
+      "Tahap morfodiferensiasi",
+    ],
+    correct_answer: "Tahap aposisi",
+  },
   {
     id: 86,
     question:
@@ -1085,9 +1091,192 @@ export const PAKET_A = [
       "Biaya relative ekonomis",
       "Mudah pembuatannya",
       "Gigi tiruan berfungsi sebagai splint sehingga melindungi blood clot",
-      "Tidak memerlukan kunjungan berkali-kali karena pencabutan gigi dan pemasangan gigi tiruan dilakukan sekaligus pada 1 kunjungan Imediet konvensional → dilanjutin . Imediet transisional / interim → diganti",
+      "Tidak memerlukan kunjungan berkali-kali karena pencabutan gigi dan pemasangan gigi tiruan dilakukan sekaligus pada 1 kunjungan",
     ],
     correct_answer:
       "Gigi tiruan berfungsi sebagai splint sehingga melindungi blood clot",
+  },
+  {
+    id: 87,
+    question:
+      "Mahasiswa fakultas kedokteran gigi sedang berdiskusi salah satu pemicu dengan topik bahasannya gigi tiruan imediat. Mereka berdebat mengenai perbedaan gigi tiruan intermediat, imediat, dan transisional. Gigi tiruan penuh transisional adalah:",
+    options: [
+      "Gigi tiruan yang berfungsi sebagai gigi tiruan imediat",
+      "Gigi tiruan yang dibuat sebagai gigi tiruan definitif dengan menambahkan elemen gigi",
+      "Gigi tiruan immediate pada pasien dengan kasus kehilangan gigi sebagian pada rahang lawannya",
+      "Gigi tiruan yang dimodifikasi dari gigi tiruan sebagian lepasan yang sudah ada dan diinsersi segera setelah pencabutan gigi. Setelah resorbsi tulang selesai, pasien akan dibuatkan gigi tiruan penuh definitif",
+      "Gigi tiruan yang dimodifikasi dari gigi tiruan penuh yang sudah ada dan diinsersikan segera setelah pencabutan gigi, setelah resorbsi tulang selesai, pasien akan dibuatkan gigi tiruan penuh definitif",
+    ],
+    correct_answer:
+      "Gigi tiruan yang dimodifikasi dari gigi tiruan sebagian lepasan yang sudah ada dan diinsersi segera setelah pencabutan gigi. Setelah resorbsi tulang selesai, pasien akan dibuatkan gigi tiruan penuh definitif",
+  },
+  {
+    id: 88,
+    question:
+      "Pasien laki-laki berumur 47 tahun, gigi masih lengkap tetapi menderita penyakit periodontal dengan gambaran klinis poket absolut 4-7mm di beberapa gigi, gingiva merah, ada perdarahan setelah probing, oral hygiene buruk, dan merokok. Urutan terapi periodontitis adalah:",
+    options: [
+      "Fase awal, fase restoratif, fase pemeliharaan, fase bedah",
+      "Fase awal, fase pemeliharaan, fase restoratif, fase bedah",
+      "Fase awal, fase pemeliharaan, fase bedah, fase restoratif",
+      "Fase awal, fase bedah, fase restoratif, fase pemeliharaan",
+      "Fase awal, fase restoratif, fase bedah, fase pemeliharaan",
+    ],
+    correct_answer: "Fase awal, fase pemeliharaan, fase bedah, fase restoratif",
+  },
+  {
+    id: 89,
+    question:
+      "Pasien anak laki-laki berusia 2 tahun, diantar ibunya ke dokter gigi dengan keluhan gusinya bengkak dan bau mulut. Berdasarkan anamnesisnya anak ini tidak mau bila disikat giginya. Pemeriksaan klinis yang dilakukan menunjukkan gusi berwarna merah kemerahan, oedem, papilla interdental membulat, dan permukaan licin di seluruh regio, serta oral debris di seluruh gigi. Apa kemungkinan diagnosis dari keluhan yang dialami anak diatas?",
+    options: [
+      "Operkulitis",
+      "Periodontitis",
+      "Gingivitis Akut",
+      "Gingivitis Eruptiva",
+      "Gingivitis Marginalis",
+    ],
+    correct_answer: "Gingivitis Marginalis",
+  },
+  {
+    id: 90,
+    question:
+      "Pasien laki-laki berumur 47 tahun, gigi masih lengkap tetapi menderita penyakit periodontal denga gambaran klinis poket absolut 4-7mm di beberapa gigi, gingiva merah, ada perdarahan setelah probing, oral hygiene buruk, dan merokok. Diagnosis penyakit periodontal pasien tersebut adalah?",
+    options: [
+      "NUP",
+      "Periodontitis Kronis",
+      "Periodontitis Agresif",
+      "Gingivitis karena plak",
+      "Gingivitis yang berhubungan dengan penyakit sistemik",
+    ],
+    correct_answer: "Periodontitis Kronis",
+  },
+  {
+    id: 91,
+    question:
+      "Pasien laki-laki berumur 47 tahun, gigi masih lengkap tetapi menderita penyakit periodontal dengan gambaran klinis poket absolut 4-7mm di beberapa gigi, gingiva merah, ada perdarahan setelah probing, oral hygiene buruk, dan merokok. Terapi yang dilakukan, setelah terapi awal yang benar/baik, terhadap poket yang kedalamannya masih 7mm adalah:",
+    options: [
+      "Kuretase",
+      "Gingivektomi",
+      "Gingivoplasti",
+      "Penghalusan akar",
+      "Bedah flap periodontal",
+    ],
+    correct_answer: "Bedah flap periodontal",
+  },
+  {
+    id: 92,
+    question:
+      "Pasien laki-laki berumur 50 tahun dikonsul ke klinik integrasi FKG UI dengan keluhan gusi di rahang bawah kiri bengkak sejak 2 minggu, untuk menggigit terasa sakit. Hasil pemeriksaan klinis intraoral: pada gigi molar satu rahang bawah kiri ada pembengkakan gusi meliputi marginal gingiva sampai attached gingiva. Fluktuasi positif, disertai poket bukal 9mm, mesial 6mm, distal 4mm, lingual 6mm dan kegoyangan gigi derajat 3. Saat gerak ke kiri ada hambatan dengan gigi molar satu kiri atas. PBI 2.9: PLI 2,5; KI 2.9. Adanya kegoyangan derajat 3 pada gigi molar satu kiri bawah pasien di atas, maka pada gigi tersebut:",
+    options: [
+      "Tidak memerlukan splint",
+      "Indikasi dibuatkan splint bruxism",
+      "Indikasi dibuatkan splint sementara setelah operasi",
+      "Indikasi dibuatkan splint sementara sebelum operasi",
+      "Indikasi dibuatkan splint tetap gigi tiruan kerangka logam",
+    ],
+    correct_answer: "Indikasi dibuatkan splint sementara sebelum operasi",
+  },
+  {
+    id: 93,
+    question:
+      "Pasien pria usia 59 tahun datang ke klinik gigi dengan keluhan sakit hebat pada gigi depan atas yang berlubang. Sejak semalam tidak bisa tidur, walaupun sudah minum obat pereda sakit. Satu bulan yang lalu juga pernah sakit tetapi setelah minum obat sakitnya hilang. Kedatangannya ke klinik gigi pagi ini untuk mengobati rasa sakit yang masih terus mengganggunya. Obat oral yang diminum pasien sebaiknya jenis:",
+    options: [
+      "Analgesik",
+      "Antipiretik",
+      "Antibiotika",
+      "Antiinflamasi",
+      "Analgesik-antipiretik",
+    ],
+    correct_answer: "Analgesik-antipiretik",
+  },
+  {
+    id: 94,
+    question:
+      "Berpegang pada konsep sakitnya, masyarakat awam seringkali tidak mampu mempersepsikan tanda-tanda klinis dari penyakit gigi dan mulut. Untuk mengatasi hal tersebut, langkah pertama dari Dental Health Education haruslah berupa:",
+    options: [
+      "Shocking",
+      "Education",
+      "Motivation",
+      "Information",
+      "Education - Information",
+    ],
+    correct_answer: "Shocking",
+  },
+  {
+    id: 95,
+    question:
+      "Pasien laki-laki usia 75 tahun, berobat ke klinik FKG UI, karena giginya sakit, dan ingin dicabut. Selain itu pasien juga ingin dibuatkan gigi tiruan yang nyaman saat berfungsi. Pasien tampak kesulitan saat berjalan. Dari anamnesa diketahui pasien menderita penyakit darah tinggi, pasca stroke, diabetes melitus dan osteoporosis. Menurut dokter gigi yang memeriksanya, pasien sudah termasuk ke kelompok geriatri. Apakah salah satu prinsip penanganan pasien dalam kasus tersebut?",
+    options: [
+      "Adanya sarana canggih dan mutakhir",
+      "Adanya kerjasama dengan pemerintah",
+      "Adanya kerjasama lintas disiplin terkait",
+      "Perawatan dengan gigi tiruan yang paling canggih",
+      "Adanya kerjasama dengan pihak rumah sakit swasta",
+    ],
+    correct_answer: "Adanya kerjasama lintas disiplin terkait",
+  },
+  {
+    id: 96,
+    question:
+      "Pasien laki-laki berumur 50 tahun dikonsul ke klinik integrasi FKGUI dengan keluhan gusi di rahang bawah kiri bengkak sejak 2 minggu, untuk menggigit terasa sakit. Hasil pemeriksaan klinis intra oral: pada gigi molar satu rahang bawah kiri ada pembengkakan gusi meliputi marginal gingiva sampai attached gingiva, fluktuasi positif, disertai poket bukal 9mm, mesial 6mm, distal 4mm, lingual 6mm, dan kegoyangan gigi derajat 3. Saat gerak ke kiri ada hambatan dengan gigi molar satu kiri atas. PBI 2.9; PI 2.5; KI 2.9. Penyebab terjadinya pembengkakan pada gigi molar satu rahang bawah pasien di atas:",
+    options: [
+      "Plak",
+      "Kalkulus",
+      "Trauma oklusi",
+      "Retensi makanan",
+      "Impaksi makanan",
+    ],
+    correct_answer: "Impaksi makanan",
+  },
+  {
+    id: 97,
+    question:
+      "Seorang pasien laki-laki 13 tahun datang ke RSGM FKGUI, dengan keluhan gigi geligi maju. TB & BB sedikit kecil dibandingkan rata2 remaja Indonesia pada umumnya. Dari anamnesa: tidur mendengkur, prestasi sekolah: biasa. Pemeriksaan EO: O simetris, profil cembung, bibir atas dan bawah terbuka 6mm. Pemeriksaan fungsional: dalam keadaan istirahat bibir terbuka. Pemeriksaan IO: OH baik, gigi geligi atas protrusif. Pemeriksaan model gigi: Lengkung gigi triangular. Pada analisis sefalometri, diperola neh: sudut SNA 84 (normal 82±2), SNB 79 (normal 80±2), inklinasi gigi insisif atas terhadap bidang SN (I-SN) adalah 114 (normal 104±6), dan inklinasi gigi insisif bawah terhadap bidang mandibula adalah 95 (normal 90±5). Bagaimana kesimpulan saudara mengenai etiologi maloklusi tersebut?",
+    options: [
+      "Mengisap jari",
+      "Thumb sucking",
+      "Tongue thrusting",
+      "Bernapas melalui mulut",
+      "Gigit jari",
+    ],
+    correct_answer: "Bernapas melalui mulut",
+  },
+  {
+    id: 98,
+    question:
+      "Pasien pria berusia 20 tahun, datang ke RSKGM dengan keluhan sakit pada rahang bawah kiri membawa radiografi panoramik dan surat konsul untuk dilakukan interpretasi pada radiograf tersebut. Secara radiografis terlihat densitas tulang menurun pada rahang bawah dengan batas tidak jelas dan terlihat adanya penipisan tulang kortikal mandibula disertai adanya penampakan pembentukan tulang baru seperti lapisan kulit bawang (onion skin appearance). Diferensial diagnosis kelainan pasien ini adalah:",
+    options: [
+      "Abses dento alveolar",
+      "Fibrous dysplasia",
+      "Ameloblastoma",
+      "Ameloblastic sarcoma",
+      "Osteomyelitis",
+    ],
+    correct_answer: "Osteomyelitis",
+  },
+  {
+    id: 99,
+    question:
+      "Seorang pasien laki-laki, berusia 48 tahun datang ke klinik RSKGM FKG UI ingin dibuatkan gigi tiruan lepas untuk menggantikan kehilangan beberapa gigi anterior dan posterior. Beliau sudah sering berobat ke klinik FKG UI dan sudah pernah dicetak rahangnya saat giginya masih lengkap. Dari pemeriksaan intraoral terdapat gigi hilang 16, 12, 11, 21, 25, 26. Pasien tidak memiliki kelainan sistemik. Apakah salah satu syarat pemilihan elemen gigi tiruan bagi pasien laki-laki diatas?",
+    options: [
+      "Disetujui oleh pasien",
+      "Tidak mengganggu fungsi bicara",
+      "Keserasian dengan jaringan sekitar",
+      "Sesuai dengan status ekonomi pasien",
+      "Tidak mengganggu fungsi pengunyahan",
+    ],
+    correct_answer: "Keserasian dengan jaringan sekitar",
+  },
+  {
+    id: 100,
+    question:
+      "Seorang wanita usia 21 tahun datang ke klinik gigi dengan keluhan salah satu gigi depan atas mengalami perubahan warna. Menurut pasien waktu kecil gigi tersebut terbentur meja, lama kelamaan berubah warna menjadi coklat kehitaman, gigi tersebut tidak pernah terasa sakit. Selanjutnya oleh dokter gigi dilakukan perawatan gigi tersebut, tetapi keesokan harinya pasien mengeluhkan gigi tersebut sakit hebat hingga mengganggu tidur. Mengapa gigi tersebut di atas sakit hebat?",
+    options: [
+      "Flare up",
+      "Abses apikalis akut",
+      "Pulpitis irreversibel",
+      "Kesalahan diagnosa",
+      "Karena tumpatan sementara",
+    ],
+    correct_answer: "Flare up",
   },
 ];
