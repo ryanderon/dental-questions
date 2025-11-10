@@ -1,37 +1,33 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
-import QuestionTypeSelector from './components/organisms/QuestionTypeSelector';
-import QuizView from './components/organisms/QuizView';
-import ResultsView from './components/organisms/ResultsView';
-import useQuiz from './hooks/useQuiz';
-import { PAKET_A } from './questions/PAKET_A';
+import { motion, AnimatePresence } from "framer-motion";
+import QuestionTypeSelector from "./components/organisms/QuestionTypeSelector";
+import QuizView from "./components/organisms/QuizView";
+import ResultsView from "./components/organisms/ResultsView";
+import useQuiz from "./hooks/useQuiz";
+import { PAKET_A } from "./questions/PAKET_A";
 
 const VIEW_STATES = {
-  SELECT_TYPE: 'SELECT_TYPE',
-  QUIZ: 'QUIZ',
-  RESULTS: 'RESULTS'
+  SELECT_TYPE: "SELECT_TYPE",
+  QUIZ: "QUIZ",
+  RESULTS: "RESULTS",
 };
 
 function App() {
   const [currentView, setCurrentView] = useState(VIEW_STATES.SELECT_TYPE);
   const [selectedQuestionSet, setSelectedQuestionSet] = useState(null);
 
-  // Initialize quiz hook with selected questions
   const quiz = useQuiz(selectedQuestionSet?.questions || []);
 
-  // Available question sets (you can add more later)
-  const questionSets = useMemo(() => [
-    {
-      type: 'PAKET A',
-      questions: PAKET_A
-    }
-    // Add more question sets here as you create them
-    // {
-    //   type: 'PAKET B',
-    //   questions: PAKET_B
-    // }
-  ], []);
+  const questionSets = useMemo(
+    () => [
+      {
+        type: "PAKET A",
+        questions: PAKET_A,
+      },
+    ],
+    []
+  );
 
   const handleSelectType = useCallback((questionSet) => {
     setSelectedQuestionSet(questionSet);
