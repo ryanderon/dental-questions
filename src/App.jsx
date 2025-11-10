@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
+import { HeartIcon } from "@phosphor-icons/react";
 import QuestionTypeSelector from "./components/organisms/QuestionTypeSelector";
 import QuizView from "./components/organisms/QuizView";
 import ResultsView from "./components/organisms/ResultsView";
@@ -110,6 +111,34 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Footer */}
+      <motion.footer
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
+        className="fixed bottom-0 left-0 right-0 py-4 bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50"
+      >
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-slate-300 text-sm flex items-center justify-center gap-2">
+            Made with{" "}
+            <motion.span
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+                ease: "easeInOut",
+              }}
+            >
+              <HeartIcon size={16} weight="fill" className="text-red-400" />
+            </motion.span>{" "}
+            by{" "}
+            <span className="font-semibold text-sky-300">ryanderon</span>
+          </p>
+        </div>
+      </motion.footer>
     </div>
   );
 }

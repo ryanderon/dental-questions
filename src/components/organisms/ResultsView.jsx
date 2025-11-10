@@ -9,15 +9,11 @@ import ScoreCard from "../molecules/ScoreCard";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
 
-const ResultsView = ({
-  results,
-  onRestart,
-  onBackToHome,
-}) => {
+const ResultsView = ({ results, onRestart, onBackToHome }) => {
   const { score, total, percentage, wrongAnswers } = results;
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-12 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
