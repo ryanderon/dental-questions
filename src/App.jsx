@@ -7,6 +7,8 @@ import QuizView from "./components/organisms/QuizView";
 import ResultsView from "./components/organisms/ResultsView";
 import useQuiz from "./hooks/useQuiz";
 import { PAKET_A } from "./questions/PAKET_A";
+import { PAKET_B } from "./questions/PAKET_B";
+import { PAKET_C } from "./questions/PAKET_C";
 
 const VIEW_STATES = {
   SELECT_TYPE: "SELECT_TYPE",
@@ -25,6 +27,14 @@ function App() {
       {
         type: "PAKET A",
         questions: PAKET_A,
+      },
+      {
+        type: "PAKET B",
+        questions: PAKET_B,
+      },
+      {
+        type: "PAKET C",
+        questions: PAKET_C,
       },
     ],
     []
@@ -134,8 +144,7 @@ function App() {
             >
               <HeartIcon size={16} weight="fill" className="text-red-400" />
             </motion.span>{" "}
-            by{" "}
-            <span className="font-semibold text-sky-300">ryanderon</span>
+            by <span className="font-semibold text-sky-300">ryanderon</span>
           </p>
         </div>
       </motion.footer>
