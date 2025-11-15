@@ -17,6 +17,7 @@ const useQuiz = (questions) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isCompleted, setIsCompleted] = useState(false);
+  const [markedQuestions, setMarkedQuestions] = useState(new Set());
 
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
@@ -47,6 +48,31 @@ const useQuiz = (questions) => {
     setCurrentQuestionIndex(0);
     setAnswers({});
     setIsCompleted(false);
+    setMarkedQuestions(new Set());
+  };
+
+  const toggleMarkQuestion = (questionId) => {
+    setMarkedQuestions(prev => {
+      const newMarked = new Set(prev);
+      if (newMarked.has(questionId)) {
+        newMarked.delete(questionId);
+      } else {
+        newMarked.add(questionId);
+      }
+      return newMarked;
+    });
+  };
+
+  const goToQuestion = (index) => {
+    if (index >= 0 && index < shuffledQuestions.length) {
+      setCurrentQuestionIndex(index);
+    }
+  };
+
+  const getMarkedQuestionsList = () => {
+    return shuffledQuestions
+      .map((question, index) => ({ ...question, index }))
+      .filter(question => markedQuestions.has(question.id));
   };
 
   const getResults = () => {
@@ -84,12 +110,16 @@ const useQuiz = (questions) => {
     selectedAnswer: answers[currentQuestion?.id],
     totalQuestions: shuffledQuestions.length,
     isCompleted,
+    markedQuestions,
     selectAnswer,
     goToNextQuestion,
     goToPreviousQuestion,
     submitQuiz,
     resetQuiz,
-    getResults
+    getResults,
+    toggleMarkQuestion,
+    goToQuestion,
+    getMarkedQuestionsList
   };
 };
 

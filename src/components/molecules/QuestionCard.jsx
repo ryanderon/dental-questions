@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { QuestionIcon, HashIcon } from "@phosphor-icons/react";
+import { QuestionIcon, HashIcon, BookmarkSimpleIcon } from "@phosphor-icons/react";
 
-const QuestionCard = ({ question, number, total, children }) => {
+const QuestionCard = ({ question, number, total, children, isMarked, onToggleMark }) => {
   return (
     <div className="w-full bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <motion.div
@@ -28,10 +28,28 @@ const QuestionCard = ({ question, number, total, children }) => {
             </div>
           </div>
 
-          <div className="bg-slate-100 px-4 py-2 rounded-lg">
-            <span className="text-sm font-bold text-slate-700">
-              {number} / {total}
-            </span>
+          <div className="flex items-center gap-3">
+            {onToggleMark && (
+              <button
+                onClick={onToggleMark}
+                className={`p-2 rounded-lg transition-all hover:scale-110 ${
+                  isMarked
+                    ? "bg-amber-100 text-amber-600 hover:bg-amber-200"
+                    : "bg-slate-100 text-slate-400 hover:bg-slate-200 hover:text-slate-600"
+                }`}
+                title={isMarked ? "Unmark question" : "Mark question"}
+              >
+                <BookmarkSimpleIcon
+                  size={24}
+                  weight={isMarked ? "fill" : "regular"}
+                />
+              </button>
+            )}
+            <div className="bg-slate-100 px-4 py-2 rounded-lg">
+              <span className="text-sm font-bold text-slate-700">
+                {number} / {total}
+              </span>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

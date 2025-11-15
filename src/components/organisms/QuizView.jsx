@@ -1,9 +1,13 @@
+import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CaretLeftIcon,
   CaretRightIcon,
   CheckCircleIcon,
+  BookmarkIcon,
+  ListIcon,
+  XIcon,
 } from "@phosphor-icons/react";
 import QuestionCard from "../molecules/QuestionCard";
 import OptionButton from "../molecules/OptionButton";
@@ -19,19 +23,95 @@ const QuizView = ({
   onNext,
   onPrevious,
   onSubmit,
+  markedQuestions,
+  onToggleMark,
+  onGoToQuestion,
+  markedQuestionsList,
 }) => {
+  const [showMarkedList, setShowMarkedList] = useState(false);
   const isLastQuestion = currentIndex === totalQuestions - 1;
   const isFirstQuestion = currentIndex === 0;
+  const isMarked = markedQuestions?.has(question?.id);
 
   return (
     <div className="min-h-screen py-8 pb-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with Progress Bar and Marked Questions Button */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-8 space-y-4"
         >
-          <ProgressBar current={currentIndex + 1} total={totalQuestions} />
+          <div className="flex justify-between items-center gap-4">
+            <div className="flex-1">
+              <ProgressBar current={currentIndex + 1} total={totalQuestions} />
+            </div>
+            {markedQuestionsList?.length > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowMarkedList(!showMarkedList)}
+                className="whitespace-nowrap"
+              >
+                <span className="flex items-center gap-2">
+                  <BookmarkIcon size={18} weight="fill" />
+                  Marked ({markedQuestionsList.length})
+                </span>
+              </Button>
+            )}
+          </div>
+
+          {/* Marked Questions List Dropdown */}
+          <AnimatePresence>
+            {showMarkedList && markedQuestionsList?.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="bg-white rounded-lg shadow-lg border border-slate-200 p-4">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                      <ListIcon size={20} weight="bold" />
+                      Marked Questions
+                    </h3>
+                    <button
+                      onClick={() => setShowMarkedList(false)}
+                      className="text-slate-400 hover:text-slate-600 transition-colors"
+                    >
+                      <XIcon size={20} weight="bold" />
+                    </button>
+                  </div>
+                  <div className="space-y-2 max-h-64 overflow-y-auto">
+                    {markedQuestionsList.map((markedQ) => (
+                      <button
+                        key={markedQ.id}
+                        onClick={() => {
+                          onGoToQuestion(markedQ.index);
+                          setShowMarkedList(false);
+                        }}
+                        className={`w-full text-left p-3 rounded-lg border transition-all hover:shadow-md ${
+                          markedQ.index === currentIndex
+                            ? "bg-sky-50 border-sky-300 shadow-sm"
+                            : "bg-slate-50 border-slate-200 hover:border-sky-300"
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="shrink-0 font-bold text-sky-600">
+                            #{markedQ.index + 1}
+                          </span>
+                          <p className="text-sm text-slate-700 line-clamp-2">
+                            {markedQ.question}
+                          </p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         <AnimatePresence mode="wait">
@@ -46,6 +126,8 @@ const QuizView = ({
               question={question.question}
               number={currentIndex + 1}
               total={totalQuestions}
+              isMarked={isMarked}
+              onToggleMark={() => onToggleMark(question.id)}
             >
               {question.options.map((option, index) => (
                 <OptionButton

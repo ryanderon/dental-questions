@@ -102,6 +102,10 @@ function App() {
               onNext={handleNext}
               onPrevious={handlePrevious}
               onSubmit={handleSubmit}
+              markedQuestions={quiz.markedQuestions}
+              onToggleMark={quiz.toggleMarkQuestion}
+              onGoToQuestion={quiz.goToQuestion}
+              markedQuestionsList={quiz.getMarkedQuestionsList()}
             />
           </motion.div>
         )}
